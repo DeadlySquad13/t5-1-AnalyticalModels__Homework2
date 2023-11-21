@@ -1,2 +1,2 @@
 run:
-	python task3_narrow.py
+	python main.py
