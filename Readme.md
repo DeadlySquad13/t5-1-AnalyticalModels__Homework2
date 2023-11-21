@@ -1,6 +1,7 @@
 # t5-1 Analytical Models Homework2
 ## Installation
-Just run:
+Clone repo, create venv, activate it
+and run:
 ```sh
 make install
 ```
