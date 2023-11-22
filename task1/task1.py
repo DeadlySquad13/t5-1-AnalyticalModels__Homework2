@@ -5,9 +5,9 @@ def print_table(table, n):
 
 print("Задача 1")
 
-n = 9 # Кол-во заявок
+n = 5 # Кол-во заявок
 m = 5 # Кол-во фаз
-tj = [1, 1, 1, 2, 3] # Время обработки заявок в ОА
+tj = [1, 1, 1, 2, 2] # Время обработки заявок в ОА
 X = [1.0] # Коэффициенты Базена
 basen_table = []
 
@@ -27,7 +27,7 @@ print_table(basen_table, n)
 
 # Расчет коэффициентов использования
 ro = [0.0] * 5 # Коэффициенты использования СМО
-ro[0] = basen_table[n-2][m-1] / basen_table[n-1][m-1]
+ro[0] = basen_table[n-1][m-1] / basen_table[n][m-1]
 for i in range(1, m):
     ro[i] = ro[0] * X[i]
 print("Коэффициенты использования:", ro)
@@ -37,7 +37,7 @@ L = [0.0] * m
 for j in range(m):
     sum_coef = 0
     for i in range(n):
-        sum_coef += pow(X[j], i+1) * basen_table[n-i][m-1]
+        sum_coef += pow(X[j], i+1) * basen_table[n-i-1][m-1]
     L[j] = sum_coef / basen_table[n][m-1]
 
 print("Кол-во заявок в каждой СМО", L)
@@ -55,6 +55,7 @@ print("Среднее время цикла", Tc)
 
 # Интенсивность потока заявок в СеМО
 l = n / Tc
+print("Интенсивность потока заявок в СеМО: ", l)
 
 # Время пребывания заявок в каждой СМО
 Tj = [0.0] * m
