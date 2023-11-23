@@ -17,13 +17,15 @@ def remove_max_element(values: list[int]) -> list[int]:
 
     return values_without_max, index_max
 
+def calculate_T(t_values: list[int]) -> int:
+    t_values_without_max, index_max = remove_max_element(t_values)
+
+    T = N * max(t1, t2, t3, t4, t5) + sum(map(lambda t: t*t, t_values_without_max)) / t_values[index_max]
+
+    return T
+
 t_values = [t1, t2, t3, t4, t5]
-t_values_without_max, index_max = remove_max_element(t_values)
-print(t_values_without_max)
-
-T = symbols('T')
-
-T = N * max(t1, t2, t3, t4, t5) + sum(map(lambda t: t*t, t_values_without_max)) / t_values[index_max]
+T = calculate_T(t_values)
 print(T)
 
 Lambda = N / T
