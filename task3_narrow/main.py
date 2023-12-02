@@ -34,6 +34,14 @@ print(Lambda)
 rho_values = list(map(lambda rho: rho * Lambda, t_values))
 print(f'rho_values: {rho_values}')
 
+unstationary_rho_values = list(filter(lambda rho: rho >= 1, rho_values))
+if len(unstationary_rho_values):
+    WARNING_COLOR = '\033[93m'
+    END_COLOR = '\033[0m'
+    print(WARNING_COLOR + \
+            f'Warning: some rho_values {unstationary_rho_values} are larger then 1, it seems that system is unstationary!' +\
+            ' Please choose other time values.' +\
+            END_COLOR)
 
 lambda_background = (N - 1) / T
 print(f'lambda background (фоновая): {lambda_background}')
